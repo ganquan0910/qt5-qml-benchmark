@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Pretty Glowing Lines</title>
+</head>
+<body>
+
+<canvas width="800" height="450"></canvas>
+<script>
+var context = document.getElementsByTagName('canvas')[0].getContext('2d');
+
+// initial start position
+var lastX = context.canvas.width * Math.random();
+var lastY = context.canvas.height * Math.random();
+var hue = 0;
+
+// closure function to draw
+// a random bezier curve with random color with a glow effect
+function line() {
+
+    context.save();
+
+    // scale with factor 0.9 around the center of canvas
+    context.translate(context.canvas.width/2, context.canvas.height/2);
+    context.scale(0.9, 0.9);
+    context.translate(-context.canvas.width/2, -context.canvas.height/2);
+
+    context.beginPath();
+    context.lineWidth = 5 + Math.random() * 10;
+
+    // our start position
+    context.moveTo(lastX, lastY);
+
+    // our new end position
+    lastX = context.canvas.width * Math.random();
+    lastY = context.canvas.height * Math.random();
+
+    // random bezier curve, which ends on lastX, lastY
+    context.bezierCurveTo(context.canvas.width * Math.random(),
+    context.canvas.height * Math.random(),
+    context.canvas.width * Math.random(),
+    context.canvas.height * Math.random(),
+    lastX, lastY);
+
+    // glow effect
+    hue = hue + 10 * Math.random();
+    context.strokeStyle = 'hsl(' + hue + ', 50%, 50%)';
+    context.shadowColor = 'white';
+    context.shadowBlur = 10;
+    // stroke the curve
+    context.stroke();
+    context.restore();
+}
+
+// call line function every 50msecs
+setInterval(line, 50);
+
+function blank() {
+    // makes the background 10% darker on each call
+    context.fillStyle = 'rgba(0,0,0,0.1)';
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+}
+
+// call blank function every 50msecs
+setInterval(blank, 40);
+
+</script>
+</body>
+</html>

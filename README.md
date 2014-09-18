@@ -1,7 +1,7 @@
 qt5-qml-benchmark
 =================
 
-Qt5 QML`s benchmark
+Qt5.3.2 QML`s benchmark
 
 
 ## Environment
@@ -19,6 +19,16 @@ QMake version 3.0
 Using Qt version 5.3.2 in /usr/lib
 ```
 
+```
+lspci | grep VGA
+00:02.0 VGA compatible controller: Intel Corporation Mobile 4 Series Chipset Integrated Graphics Controller (rev 07)
+```
+
+```
+cat /proc/cpuinfo | grep 'model name'
+model name      : Intel(R) Core(TM)2 Duo CPU     T6670  @ 2.20GHz
+model name      : Intel(R) Core(TM)2 Duo CPU     T6670  @ 2.20GHz
+```
 
 ## StackView
 
@@ -26,3 +36,13 @@ Using Qt version 5.3.2 in /usr/lib
 qmlscene StackViewBenchMark.qml
 ```
 
+
+## Canvas
+
+```
+chromium pretty-glowing-lines.html
+```
+
+```
+qmlscene CanvasBenchMark.qml
+```
