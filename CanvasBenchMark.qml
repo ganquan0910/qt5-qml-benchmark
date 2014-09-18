@@ -36,7 +36,7 @@ Canvas {
         }
         context.strokeStyle = Qt.hsla(hue, 0.5, 0.5, 1.0);
         context.shadowColor = 'white';
-        // FIXME: it will kill your SLOW CPU 
+        // FIXME: it will kill your SLOW CPU, but chromium is OK! just comment it
         // context.shadowBlur = 10;
         context.stroke();
         context.restore();
